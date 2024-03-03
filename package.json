@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.18.3",
+    "nodemailer": "^6.9.11"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "portaldrop.io",
+  "version": "1.0.0",
+  "main": "email.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
