@@ -1,48 +1,40 @@
 const express = require('express');
-const appRoute = require("./route/send-email");
-// const nodemailer = require('nodemailer');
+const cors = require('cors');
+const sendEmail = require('./route/send-email');
 
 const app = express();
-const port = process.env.PORT || 5000; // Use environment variable for port
 
 app.use(express.json());
 
-// routes 
-app.use('/api', appRoute);
+app.use(cors({
+  origin: '*' // Allow all origins (not recommended in production)
+}));
 
-// // Create a transporter using a secure method like OAuth2 or app passwords
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail', // Replace with your email service provider
-//     auth: {
-//         user: "dvdogoba23@gmail.com",
-//         pass: "vtxvbevlocjgbwxv",
-//     }
-// });
+// Log incoming requests
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
 
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/index.html'); // Serve the index.html file
-// });
+app.post('/send-email', async (req, res) => {
+  try {
+    // Log incoming ETH address
+    console.log('Received ethAddress:', req.body.ethAddress);
 
-// app.post('/send-email', async (req, res) => {
-//     const { messageValue } = req.body; // Extract the value from the request body
+    const { ethAddress } = req.body;
+    const result = await sendEmail(ethAddress);
 
-//     try {
-//         const mailOptions = {
-//             from: 'Your Name <your_email@example.com>', // Replace with your name and email
-//             to: 'recipient_email@example.com', // Replace with the recipient's email
-//             subject: 'Email from Your Website',
-//             text: `This email contains the following value: ${messageValue}`,
-//             html: `<b>This email contains the following value:</b> ${messageValue}` // Consider using HTML for richer formatting
-//         };
+    // Log result before sending response
+    console.log('Response to be sent:', result);
 
-//         await transporter.sendMail(mailOptions);
-//         res.json({ message: 'Email sent successfully!' });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: 'Failed to send email' });
-//     }
-// });
+    res.status(200).send(result);
+  } catch (error) {
+    console.error('Error during email sending:', error);
+    res.status(500).send("Failed to send email");
+  }
+});
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

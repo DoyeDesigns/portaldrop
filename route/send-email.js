@@ -1,56 +1,39 @@
-// var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
-// // Create a transporter
-// var transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 465,
-//     secure: true,
-//     auth: {
-//         user: "dvdogoba23@gmail.com",
-//         pass: "vtxvbevlocjgbwxv",
-//     },
-// });
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.USER_EMAIL,
+    pass: process.env.PASS_WORD,
+  },
+});
 
-// // Define your mail options template
-// var mailOptionsTemplate = {
-//     from: "dvdogoba23@gmail.com",
-//     to: "edyogoba23@gmail.com",
-//     subject: "Sending Email using Node.js",
-//     text: "That was easy!",
-// };
+// Define your mail options template
+const mailOptionsTemplate = {
+    from: process.env.USER_EMAIL,
+    to: "edyogoba23@gmail.com",
+    subject: "Sending Email using Node.js",
+    text: "That was easy!",
+};
 
-// // Handle requests
-// function sendEmail(req, res) {
-//     // Retrieve the ethAddress value from the request body
-//     const { ethAddress } = req.body;
+async function sendEmail(ethAddress) {
+  console.log("Received ethAddress:", ethAddress); // Log the received address
 
-//     // Customize mail options with ethAddress
-//     var mailOptions = {
-//         ...mailOptionsTemplate,
-//         text: `Eth Address: ${ethAddress}`, // Modify the email body to include the ethAddress value
-//     };
+  const mailOptions = {
+    ...mailOptionsTemplate,
+    text: `Eth Address: ${ethAddress}`,
+  };
 
-//     // Send mail
-//     transporter.sendMail(mailOptions, function (error, info) {
-//         if (error) {
-//             console.log(error);
-//             res.status(500).send("Failed to send email");
-//         } else {
-//             console.log("Email sent: " + info.response);
-//             res.status(200).send("Email sent successfully");
-//         }
-//     });
-// }
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.response);
+    return "Email sent successfully";
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw new Error("Failed to send email");
+  }
+}
 
-// // Export the sendEmail function for use in other modules
-// module.exports = sendEmail;
-
-
-const router = require("express").Router();
-
-const [send, get] = require('../controller/emailControlller')
-
-router.post('/sent/user', send);
-router.post('get/user', get);
-
-module.exports = router;
+module.exports = sendEmail;
