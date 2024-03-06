@@ -13,8 +13,11 @@ app.use(cors({
 // Log incoming requests
 app.use((req, res, next) => {
   console.log(`Received request: ${req.method} ${req.url}`);
+  console.log(`Sent request: ${res.method} ${req.url}`)
   next();
 });
+
+app.use(express.static('portaldrop'));
 
 app.post('/send-email', async (req, res) => {
   try {
