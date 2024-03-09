@@ -17,20 +17,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', express.static('translate_a'));
-app.use('/', express.static('assets'));
-app.use('/', express.static('route'));
-app.use('/', express.static('npm'));
-app.use('/', express.static('releases'));
+app.use('/translate_a', express.static(path.resolve(__dirname, 'translate_a')));
+app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
+app.use('/route', express.static(path.resolve(__dirname, 'route')));
+app.use('/npm', express.static(path.resolve(__dirname, 'npm')));
+app.use('/releases', express.static(path.resolve(__dirname, 'releases')));
 
 // Define the path to your HTML file
 const filePath = path.resolve(__dirname, 'index.html');
 
 // Serve the HTML file
 app.get('/', (req, res) => {
+    res.sendFile(filePath);
     console.log(`Sent response: HTML file sent`);
     console.log(filePath);
-    res.sendFile(filePath);
 });
 
 app.post('/send-email', async (req, res) => {
