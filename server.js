@@ -17,15 +17,23 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('portaldrop', {
-  setHeaders: (res, path) => {
-    res.setHeader('Content-Type', mime.getType(path));
+app.use(express.static('portaldrop'));
+
+app.use('/assets/css', express.static('portaldrop/assets/css', {
+  setHeaders: {
+    'Content-Type': 'text/css'
+  }
+}));
+
+app.use('/assets/js', express.static('portaldrop/assets/js', {
+  setHeaders: {
+    'Content-Type': 'application/javascript'
   }
 }));
 
 app.get('/', (req, res) => {
   // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-  res.sendFile('/home/portaldrop/portaldrop/index.html');
+  res.sendFile('/home/portaldrop/portaldrindex.html');
 });
 
 app.post('/send-email', async (req, res) => {
