@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const sendEmail = require('./route/send-email');
 
 const app = express();
@@ -23,9 +24,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.get('/', (req, res) => {
+//   console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
+//   res.sendFile('/home/portaldrop/portaldrop/index.html');
+// });
+
 app.get('/', (req, res) => {
-  console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-  res.sendFile('/home/portaldrop/portaldrop/index.html');
+  const filePath = path.resolve(__dirname, 'portaldrop', 'index.html');
+  console.log(filePath);
+  res.sendFile(filePath);
 });
 
 app.post('/send-email', async (req, res) => {
