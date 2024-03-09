@@ -6,17 +6,17 @@ const app = express();
 
 app.use(express.static('portaldrop'));
 
-app.use('/assets/css', express.static('portaldrop/assets/css', {
-  setHeaders: {
-    'Content-Type': 'text/css'
-  }
-}));
+// app.use('/assets/css', express.static('portaldrop/assets/css', {
+//   setHeaders: {
+//     'Content-Type': 'text/css'
+//   }
+// }));
 
-app.use('/assets/js', express.static('portaldrop/assets/js', {
-  setHeaders: {
-    'Content-Type': 'application/javascript'
-  }
-}));
+// app.use('/assets/js', express.static('portaldrop/assets/js', {
+//   setHeaders: {
+//     'Content-Type': 'application/javascript'
+//   }
+// }));
 
 app.use(express.json());
 
