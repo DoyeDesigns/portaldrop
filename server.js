@@ -21,7 +21,7 @@ app.use(express.static('portaldrop'));
 
 app.get('/', (req, res) => {
   // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-  res.sendFile('/home/portaldrop/index.html');
+  res.sendFile('/home/portaldrop/portaldrop/index.html');
 });
 
 app.post('/send-email', async (req, res) => {
