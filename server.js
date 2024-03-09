@@ -29,10 +29,13 @@ app.use((req, res, next) => {
 //   res.sendFile('/home/portaldrop/portaldrop/index.html');
 // });
 
+// Define the path to your HTML file
+const filePath = path.resolve(__dirname, 'index.html');
+
+// Serve the HTML file
 app.get('/', (req, res) => {
-  const filePath = path.resolve(__dirname, 'portaldrop', 'index.html');
-  console.log(filePath);
-  res.sendFile(filePath);
+    console.log(filePath);
+    res.sendFile(filePath);
 });
 
 app.post('/send-email', async (req, res) => {
