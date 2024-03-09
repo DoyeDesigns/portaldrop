@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
 
 app.post('/send-email', async (req, res) => {
   try {
+    // Log the entire request body for debugging
+    console.log('Received request body:', req.body);
+    
     // Log incoming ETH address
     console.log('Received ethAddress:', req.body.ethAddress);
 
