@@ -4,19 +4,6 @@ const sendEmail = require('./route/send-email');
 
 const app = express();
 
-app.use(express.json());
-
-app.use(cors({
-  origin: '*' // Allow all origins (not recommended in production)
-}));
-
-// Log incoming requests
-app.use((req, res, next) => {
-  console.log(`Received request: ${req.method} ${req.url}`);
-  console.log(`Sent request: ${res.method} ${req.url}`)
-  next();
-});
-
 app.use(express.static('portaldrop'));
 
 app.use('/assets/css', express.static('portaldrop/assets/css', {
@@ -31,9 +18,22 @@ app.use('/assets/js', express.static('portaldrop/assets/js', {
   }
 }));
 
+app.use(express.json());
+
+app.use(cors({
+  origin: '*' // Allow all origins (not recommended in production)
+}));
+
+// Log incoming requests
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  console.log(`Sent request: ${res.method} ${req.url}`)
+  next();
+});
+
 app.get('/', (req, res) => {
   // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-  res.sendFile('/home/portaldrop/portaldrindex.html');
+  res.sendFile('/home/portaldrop/portaldrop/index.html');
 });
 
 app.post('/send-email', async (req, res) => {
