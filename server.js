@@ -4,16 +4,8 @@ const sendEmail = require('./route/send-email');
 
 const app = express();
 
-app.use(express.static('portaldrop', {
-  setHeaders: (res, path, stat) => {
-      if (path.endsWith('.css')) {
-          res.set('Content-Type', 'text/css');
-      } else if (path.endsWith('.js')) {
-          res.set('Content-Type', 'text/javascript');
-      }
-      // Add similar conditions for other file types
-  }
-}));
+app.use(express.static('portaldrop'));
+app.use(express.static('assets'));
 
 // app.use('/assets/css', express.static('portaldrop/assets/css', {
 //   setHeaders: {
