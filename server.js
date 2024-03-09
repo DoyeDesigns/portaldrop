@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 app.use(express.static('portaldrop'));
 
 app.get('/', (req, res) => {
-  console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
+  // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
   res.sendFile('/home/portaldrop/index.html');
 });
 
