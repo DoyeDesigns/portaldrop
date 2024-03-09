@@ -5,12 +5,6 @@ const sendEmail = require('./route/send-email');
 
 const app = express();
 
-app.use(express.static('translate_a'));
-app.use(express.static('assets'));
-app.use(express.static('route'));
-app.use(express.static('npm'));
-app.use(express.static('releases'));
-
 app.use(express.json());
 
 app.use(cors({
@@ -20,20 +14,21 @@ app.use(cors({
 // Log incoming requests
 app.use((req, res, next) => {
   console.log(`Received request: ${req.method} ${req.url}`);
-  console.log(`Sent request: ${res.method} ${req.url}`)
   next();
 });
 
-// app.get('/', (req, res) => {
-//   console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-//   res.sendFile('/home/portaldrop/portaldrop/index.html');
-// });
+app.use(express.static('translate_a'));
+app.use(express.static('assets'));
+app.use(express.static('route'));
+app.use(express.static('npm'));
+app.use(express.static('releases'));
 
 // Define the path to your HTML file
 const filePath = path.resolve(__dirname, 'index.html');
 
 // Serve the HTML file
 app.get('/', (req, res) => {
+    console.log(`Sent response: HTML file sent`);
     console.log(filePath);
     res.sendFile(filePath);
 });
