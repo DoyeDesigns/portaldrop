@@ -5,11 +5,11 @@ const sendEmail = require('./route/send-email');
 
 const app = express();
 
-app.use(express.static('./translate_a'));
-app.use(express.static('./assets'));
-app.use(express.static('./route'));
-app.use(express.static('./npm'));
-app.use(express.static('./releases'));
+app.use(express.static('translate_a'));
+app.use(express.static('assets'));
+app.use(express.static('route'));
+app.use(express.static('npm'));
+app.use(express.static('releases'));
 
 app.use(express.json());
 
