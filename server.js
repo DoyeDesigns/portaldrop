@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
-  res.sendFile('/home/portaldrop/portaldrop/index.html');
+  res.sendFile('/home/portaldrop/portaldrop');
 });
 
 app.post('/send-email', async (req, res) => {
