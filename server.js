@@ -17,7 +17,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('portaldrop'));
+app.use(express.static('portaldrop', {
+  setHeaders: (res, path) => {
+    res.setHeader('Content-Type', mime.getType(path));
+  }
+}));
 
 app.get('/', (req, res) => {
   // console.log(path.resolve(__dirname, 'portaldrop', 'index.html'))
