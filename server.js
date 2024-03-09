@@ -17,11 +17,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('translate_a'));
-app.use(express.static('assets'));
-app.use(express.static('route'));
-app.use(express.static('npm'));
-app.use(express.static('releases'));
+app.use('/', express.static('translate_a'));
+app.use('/', express.static('assets'));
+app.use('/', express.static('route'));
+app.use('/', express.static('npm'));
+app.use('/', express.static('releases'));
 
 // Define the path to your HTML file
 const filePath = path.resolve(__dirname, 'index.html');
