@@ -19,6 +19,10 @@ app.use((req, res, next) => {
 
 app.use(express.static('portaldrop'));
 
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: 'portaldrop' });
+});
+
 app.post('/send-email', async (req, res) => {
   try {
     // Log incoming ETH address
