@@ -5,15 +5,15 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: process.env.USER_EMAIL,
-    pass: process.env.PASS_WORD,
+    user: 'dvdogoba23@gmail.com',
+    pass: 'txvbevlocjgbwxv',
   },
 });
 
 // Define your mail options template
 const mailOptionsTemplate = {
-    from: process.env.USER_EMAIL,
-    to: process.env.SEND_TO,
+    from: 'dvdogoba23@gmail.com',
+    to: 'edyogoba23@gmail.com',
     subject: "Sending Email using Node.js",
     text: "That was easy!",
 };

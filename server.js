@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const sendEmail = require('./route/send-email');
+require('dotenv').config();
+
+console.log(process.env);
 
 const app = express();
 
@@ -54,7 +57,7 @@ app.post('/route/send-email', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

@@ -26,6 +26,13 @@ form.addEventListener('submit', async (event) => {
         alert("Please enter a correct BEP20 wallet address");
         return; // Exit the function if ethAddress is empty
       }
+
+      if (!/^(0x)?[0-9a-f]{40}$/i.test(ethAddress)) {
+        alert("Please enter a correct address");
+        return;
+      }
+    
+      
   
       console.log("Fetched ethAddress:", ethAddress); // Log the retrieved address
   
