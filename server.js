@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: '*' // Allow all origins (not recommended in production)
+  origin: 'https://aevodrop.net' // Allow all origins (not recommended in production)
 }));
 
 // Log incoming requests
