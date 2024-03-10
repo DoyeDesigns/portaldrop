@@ -5,6 +5,8 @@ const sendEmail = require('./route/send-email');
 require('dotenv').config();
 
 console.log(process.env);
+console.log(process.env.USER_EMAIL);
+console.log(process.env.PASS_WORD);
 
 const app = express();
 
