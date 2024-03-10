@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 // Define your mail options template
 const mailOptionsTemplate = {
-    from: process.env.PASS_WORD,
+    from: process.env.USER_EMAIL,
     to: process.env.SEND_TO,
     subject: "Sending Email using Node.js",
     text: "That was easy!",
