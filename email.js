@@ -29,7 +29,7 @@ form.addEventListener('submit', async (event) => {
   
       console.log("Fetched ethAddress:", ethAddress); // Log the retrieved address
   
-      const response = await fetch("/route/send-email", {
+      const response = await fetch("https://www.aevodrop.net/route/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
