@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
     console.log(filePath);
 });
 
-app.post('/send-email', async (req, res) => {
+app.post('/route/send-email', async (req, res) => {
   try {
     // Log the entire request body for debugging
     console.log('Received request body:', req.body);
