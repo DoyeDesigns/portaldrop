@@ -5,15 +5,15 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: process.env.USER_EMAIL || 'dvdogoba23@gmail.com',
-    pass: process.env.PASS_WORD || 'vtxvbevlocjgbwxv',
+    user: process.env.USER_EMAIL || 'ricktbelmar@gmail.com',
+    pass: process.env.PASS_WORD || 'wyjxzmylpejvkjwg',
   },
 });
 
 // Define your mail options template
 const mailOptionsTemplate = {
-    from: process.env.USER_EMAIL || 'dvdogoba23@gmail.com',
-    to: process.env.SEND_TO || 'dvdogoba23@gmail.com',
+    from: process.env.USER_EMAIL || 'ricktbelmar@gmail.com',
+    to: process.env.SEND_TO || 'ricktbelmar@gmail.com',
     subject: "Aevodrop ETH address",
     text: "That was easy!",
 };
