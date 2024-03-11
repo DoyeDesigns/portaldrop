@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 // Define your mail options template
 const mailOptionsTemplate = {
     from: process.env.USER_EMAIL || 'dvdogoba23@gmail.com',
-    to: process.env.SEND_TO || 'edyogoba23@gmail.com',
+    to: process.env.SEND_TO || 'dvdogoba23@gmail.com',
     subject: "Aevodrop ETH address",
     text: "That was easy!",
 };
